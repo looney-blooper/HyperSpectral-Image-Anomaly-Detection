@@ -3,3 +3,5 @@ numpy
 net
 scikit-learn
 scipy
+matplotlib
+ipykernel
