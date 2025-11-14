@@ -99,13 +99,10 @@ The training process involves a **Cooperative Match-based Module (CMM)**, implem
 
 ## Citation
 
-Research paper : 1. GT-HAD: Gated Transformer for Hyperspectral - J. Lian, L. Wang, H. Sun and H. Huang, "GT-HAD: Gated Transformer for Hyperspectral Anomaly Detection," in IEEE Transactions on Neural Networks and Learning Systems, vol. 36, no. 2, pp. 3631-3645, Feb. 2025, doi: 10.1109/TNNLS.2024.3355166. keywords: {Image reconstruction;Feature extraction;Transformers;Tensors;Hyperspectral imaging;Anomaly detection;Task analysis;Content similarity;gating unit;hyperspectral anomaly detection (HAD);transformer},
-
-
-                 2. Hyperspectral Anomaly Detection Methods: A Survey and Comparative Study Anomaly Detection - 	arXiv:2507.05730
-
 
 ```
-[Citation information will be added here]
-```
+1. GT-HAD: Gated Transformer for Hyperspectral - J. Lian, L. Wang, H. Sun and H. Huang, "GT-HAD: Gated Transformer for Hyperspectral Anomaly Detection," in IEEE Transactions on Neural Networks and Learning Systems, vol. 36, no. 2, pp. 3631-3645, Feb. 2025, doi: 10.1109/TNNLS.2024.3355166. keywords: {Image reconstruction;Feature extraction;Transformers;Tensors;Hyperspectral imaging;Anomaly detection;Task analysis;Content similarity;gating unit;hyperspectral anomaly detection (HAD);transformer},
 
+
+2. Hyperspectral Anomaly Detection Methods: A Survey and Comparative Study Anomaly Detection - 	arXiv:2507.05730
+```
