@@ -131,6 +131,14 @@ def train_on_file(filename: str) -> None:
     block_fold = BlockFoldTF()
     block_search = BlockSearchTF(block_embedding=block_embed, block_query=block_query)
 
+    # 1. Setup Checkpoint Manager
+    # We save the model (net) and the optimizer so we can resume training later if needed
+    ckpt = tf.train.Checkpoint(step=tf.Variable(1), optimizer=optimizer, net=net)
+    
+    # Create a 'checkpoints' folder inside your results folder
+    ckpt_dir = os.path.join(RESULTS_DIR, filename, 'checkpoints')
+    manager = tf.train.CheckpointManager(ckpt, ckpt_dir, max_to_keep=3)
+
     # ----- training loop -----
     start_time = time.time()
     for itr in range(1, END_ITER + 1):
@@ -171,6 +179,12 @@ def train_on_file(filename: str) -> None:
             match_vec = block_search.compute_match_vec_from_batched_search_matrix(search_batched, info, orig_H=H, orig_W=W)
             match_sum = int(tf.reduce_sum(match_vec).numpy())
             print(f"  -> Updated match_vec (sum={match_sum}/{num_blocks})")
+
+
+    # 2. Save the final model
+    ckpt.step.assign(END_ITER) # Update the step counter
+    save_path = manager.save()
+    print(f"Model saved successfully at: {save_path}")
 
     total_time = time.time() - start_time
     print(f"Training completed in {total_time:.2f} seconds")
