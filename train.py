@@ -11,14 +11,14 @@ from sklearn.metrics import roc_auc_score, roc_curve
 # === adjust these paths/flags as needed ===
 DATA_DIR = "./data"
 RESULTS_DIR = "./results"
-FILES = ["los-angeles-1"]        # list of mat filenames (without .mat)
+FILES = ["los-angeles-1","pavia","texas-goast","cat-island"]        # list of mat filenames (without .mat)
 SEED = 42
 
 # training hyperparams
 BATCH_SIZE = 32
-END_ITER = 150
+END_ITER = 75
 SEARCH_ITER = 25
-LR = 1e-3
+LR = 1e-4
 
 # model / block params (must match your implementations)
 PATCH_SIZE = 3            # psize (mini patch side inside block)
