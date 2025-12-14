@@ -11,14 +11,14 @@ from sklearn.metrics import roc_auc_score, roc_curve
 # === adjust these paths/flags as needed ===
 DATA_DIR = "./data"
 RESULTS_DIR = "./results"
-FILES = ["los-angeles-1","pavia","texas-goast","cat-island"]        # list of mat filenames (without .mat)
+FILES = ["los-angeles-1"]        # list of mat filenames (without .mat)
 SEED = 42
 
 # training hyperparams
 BATCH_SIZE = 32
 END_ITER = 75
 SEARCH_ITER = 25
-LR = 1e-4
+LR = 1e-3
 
 # model / block params (must match your implementations)
 PATCH_SIZE = 3            # psize (mini patch side inside block)
@@ -26,18 +26,14 @@ PATCH_STRIDE = 3          # pstride (mini-patch grid count per axis)
 BLOCK_SIZE = PATCH_SIZE * PATCH_STRIDE   # sliding window (block) size
 EMBED_DIM = 64
 
-# residual smoothing (approximation)
 SPATIAL_SMOOTH_K = 3  # 2D avg-pool kernel size after spectral averaging
 
-# === imports from your code (adjust module paths if you moved files) ===
 from model.block_tf import BlockEmbeddingTF, BlockFoldTF             # channels-last extractor/fold
 from model.block_search_tf import BlockSearchTF                      # CMM
 from model.gtblock_tf import NetTF                                   # conv_head -> GTB -> conv_tail
 
 
-# -------------------------
-# Utilities
-# -------------------------
+
 def set_seed(seed: int) -> None:
     random.seed(seed)
     np.random.seed(seed)
@@ -60,9 +56,7 @@ def save_results(save_dir: str, residual_map: np.ndarray, roc_pd: np.ndarray, ro
     sio.savemat(os.path.join(save_dir, "GT-HAD_roc.mat"), {"PD": roc_pd, "PF": roc_pf})
 
 
-# -------------------------
-# Core training routine
-# -------------------------
+
 def train_on_file(filename: str) -> None:
     """
     Train GT-HAD on a single file (MAT containing 'data' [H,W,Bands] and 'map' ground truth).
@@ -230,9 +224,7 @@ def train_on_file(filename: str) -> None:
     print(f"Saved results to {out_dir}")
 
 
-# -------------------------
-# Entry point
-# -------------------------
+
 if __name__ == "__main__":
     os.makedirs(RESULTS_DIR, exist_ok=True)
     for f in FILES:

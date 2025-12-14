@@ -81,15 +81,6 @@ The script will:
 4.  Compute the AUC score for performance evaluation.
 5.  Save the residual map and ROC curve data to the `results/` directory.
 
-### Testing
-
-To run the provided test for the block extraction and folding functionality:
-
-```bash
-python -m tests.block_tf_test
-```
-
-This test ensures that the `BlockEmbeddingTF` and `BlockFoldTF` modules are working correctly by performing a round-trip check (extracting blocks and then folding them back into an image).
 
 ## How It Works
 
