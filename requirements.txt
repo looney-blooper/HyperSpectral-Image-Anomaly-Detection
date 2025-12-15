@@ -5,5 +5,3 @@ scikit-learn
 scipy
 matplotlib
 ipykernel
-tifffile
-imagecodecs
