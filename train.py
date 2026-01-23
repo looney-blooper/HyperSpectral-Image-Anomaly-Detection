@@ -15,8 +15,8 @@ FILES = ["los-angeles-1"]        # list of mat filenames (without .mat)
 SEED = 42
 
 # training hyperparams
-BATCH_SIZE = 32
-END_ITER = 75
+BATCH_SIZE = 64
+END_ITER = 150
 SEARCH_ITER = 25
 LR = 1e-3
 
